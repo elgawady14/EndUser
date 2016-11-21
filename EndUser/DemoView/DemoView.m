@@ -79,7 +79,7 @@
 //    [self.maskView addSubview:self.trackingButton];
     
     self.containerView = [UIView new];
-    [self.view addSubview:self.containerView];
+    //[self.view addSubview:self.containerView];
     
     self.timeView = [[MetricView alloc] initWithImage:[UIImage imageNamed:@"time"] title:@"Elapsed Time" color:[UIColor whiteColor]];
     [self.containerView addSubview:self.timeView];
@@ -124,7 +124,7 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    [self.mapView anchorTopCenterFillingWidthWithLeftAndRightPadding:10 topPadding:20 height:380];
+    [self.mapView anchorTopCenterFillingWidthWithLeftAndRightPadding:10 topPadding:20 height: self.view.frame.size.height - 40];
     [self.maskView anchorTopCenterFillingWidthWithLeftAndRightPadding:0 topPadding:0 height:75];
     [self.avatarImageView anchorCenterLeftWithLeftPadding:10 width:60 height:60];
     [self.dateLabel alignToTheRightOf:self.avatarImageView matchingTopAndFillingWidthWithLeftAndRightPadding:10 height:20];
@@ -135,61 +135,10 @@
     [self.containerView groupGrid:@[self.topSpeedView, self.averageSpeedView, self.distanceView, self.timeView, self.averageAltitudeView, self.maxAltitudeView] fillingWidthWithColumnCount:3 spacing:10];
 }
 
-
-#pragma mark - DevBoy
-
-/*- (void)start {
-    _tracking = YES;
-    
-    [self.trackingButton setImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
-    [self.trackingButton removeTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-    [self.trackingButton addTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.devBoy beginRouteTracking];
-}
-
-- (void)stop {
-    _tracking = NO;
-    
-    [self.trackingButton setImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
-    [self.trackingButton removeTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
-    [self.trackingButton addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.devBoy endRouteTracking];
-    
-    [[Utils locationsRef] removeValue];
-
-//    [[Utils locationsRef] removeValue];
-}
-
-- (void)devBoyDidUpdate:(DevBoy *)devBoy {
-    self.topSpeedView.valueLabel.text = [NSString stringWithFormat:@"%.1f mph", [devBoy topSpeedWithUnit:SpeedUnitMilesPerHour]];
-    self.averageSpeedView.valueLabel.text = [NSString stringWithFormat:@"%.1f mph", [devBoy averageSpeedWithUnit:SpeedUnitMilesPerHour]];
-    self.timeView.valueLabel.text = [devBoy routeDurationString];
-    self.distanceView.valueLabel.text = [NSString stringWithFormat:@"%.2f mi", [devBoy totalDistanceWithUnit:DistanceUnitMiles]];
-    self.averageAltitudeView.valueLabel.text = [NSString stringWithFormat:@"%.0f ft", [devBoy averageAltitudeWithUnit:DistanceUnitFeet]];
-    self.maxAltitudeView.valueLabel.text = [NSString stringWithFormat:@"%.0f ft", [devBoy maximumAltitudeWithUnit:DistanceUnitFeet]];
-}
-
-+(UIImage*) imageWithColor:(UIColor*)color andSize:(CGSize)size{
-    UIImage* img=nil;
-    
-    CGRect rect=CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    CGContextRef context=UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    CGContextFillRect(context, rect);
-    img=UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return img;
-}*/
-
 #pragma mark - Map view delegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-//    UIColor *yellow = [UIColor colorWithRed:254.0/255 green:206.0/255 blue:9.0/255 alpha:1.0];
     UIColor *lightBlue = [UIColor colorWithRed:43.0/255 green:169.0/255 blue:223.0/255 alpha:1.0];
     renderer.fillColor = lightBlue;
     renderer.strokeColor = lightBlue;
@@ -200,14 +149,6 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     
     NSLog(@"longitude :: %f latitude :: %f", userLocation.coordinate.longitude, userLocation.coordinate.latitude);
-    
-    /*if (_tracking) {
-
-        NSString *latitude = [NSString stringWithFormat:@"%f", userLocation.coordinate.latitude];
-        NSString *longitude = [NSString stringWithFormat:@"%f", userLocation.coordinate.longitude];
-        
-        [Utils storeLocationsWithLatitudeWithLatitude:latitude andLongitude:longitude];
-    }*/
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -232,16 +173,40 @@
     
     [self centerMapOnThisLocation:location];
 
-    //[self updateUIWithThisLocation:location];
+    [self updateUIWithThisLocation:location];
 }
 
-- (void) centerMapOnThisLocation: (NSDictionary*) location {
+- (void) centerMapOnThisLocation: (NSDictionary*) locationDic {
 
     if (_tracking) {
     
-        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([[location valueForKey:@"latitude"] floatValue], [[location valueForKey:@"longitude"] floatValue]);
-        [_mapView setRegion:MKCoordinateRegionMake(coor, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:[[locationDic valueForKey:@"latitude"] floatValue] longitude:[[locationDic valueForKey:@"longitude"] floatValue]];
+        
+        [_mapView setRegion:MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
+        
+        [self putPlaceMarkInLocation: location];
     }
+}
+
+- (void) putPlaceMarkInLocation:(CLLocation*) location {
+    
+    
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:location.coordinate];
+    [self.mapView addAnnotation:placemark];
+
+    /*CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        
+        // Check for returned placemarks
+        if (placemarks && placemarks.count > 0) {
+            CLPlacemark *topResult = [placemarks objectAtIndex:0];
+            
+            MKPlacemark *placemark = [[MKPlacemark alloc]initWithPlacemark:topResult];
+            [self.mapView addAnnotation:placemark];
+        }
+        
+    }];*/
 }
 
 - (void) updateUIWithThisLocation: (NSDictionary*) location {
