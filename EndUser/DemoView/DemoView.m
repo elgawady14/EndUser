@@ -169,28 +169,56 @@
 
 - (void) handleNewLocationsAdded:(NSNotification*) notification {
     
-    NSDictionary *location = notification.object;
+    NSDictionary *locationDic = notification.object;
     
-    [self centerMapOnThisLocation:location];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[[locationDic valueForKey:@"latitude"] floatValue] longitude:[[locationDic valueForKey:@"longitude"] floatValue]];
 
-    [self updateUIWithThisLocation:location];
+    [self calculateMetrics: location];
+
+
+    [self updateMap];
+    
+    [self centerMap: location];
+
 }
 
-- (void) centerMapOnThisLocation: (NSDictionary*) locationDic {
+- (void) centerMap: (CLLocation*) location {
 
     if (_tracking) {
-    
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:[[locationDic valueForKey:@"latitude"] floatValue] longitude:[[locationDic valueForKey:@"longitude"] floatValue]];
-        
-        [_mapView setRegion:MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
         
         [self putPlaceMarkInLocation: location];
+        
+        [_mapView setRegion:MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
+    }
+}
+
+- (void) calculateMetrics:(CLLocation*) location {
+    
+    [self.devBoy.routeLocations addObject:location];
+    
+    [self.devBoy handleLocationUpdate:location];
+}
+
+- (void) updateMap {
+    
+    [self.devBoy createPolylineForRoute];
+    [self.devBoy createRegionForRoute];
+    
+    if (self.devBoy.routePolyline != nil) {
+        
+        [_mapView addOverlay:self.devBoy.routePolyline];
+        [_mapView setRegion:self.devBoy.routeRegion animated:YES];
     }
 }
 
 - (void) putPlaceMarkInLocation:(CLLocation*) location {
     
     
+    for(id<MKAnnotation> v in [self.mapView annotations]) {
+        
+        [self.mapView removeAnnotation: v];
+    }
+
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:location.coordinate];
     [self.mapView addAnnotation:placemark];
 
@@ -209,17 +237,7 @@
     }];*/
 }
 
-- (void) updateUIWithThisLocation: (NSDictionary*) location {
-  
-     [self.devBoy createPolylineForRoute];
-     [self.devBoy createRegionForRoute];
-    
-     if (self.devBoy.routePolyline != nil) {
-    
-        [_mapView addOverlay:self.devBoy.routePolyline];
-        [_mapView setRegion:self.devBoy.routeRegion animated:YES];
-     }
-}
+
 
 
 @end
