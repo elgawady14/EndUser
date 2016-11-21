@@ -29,7 +29,7 @@ import Firebase
     
     class func observeNewLocations() {
         
-        locationsRef.observe(.value) {(snapshot: FIRDataSnapshot) in
+        locationsRef.observe(.childAdded) {(snapshot: FIRDataSnapshot) in
             
             print(snapshot.value ?? "Empty Location")
             

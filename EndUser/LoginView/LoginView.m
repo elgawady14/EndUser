@@ -11,7 +11,7 @@
 @import FirebaseAuth;
 @import GoogleSignIn;
 
-#define CLIENT_ID @"668926460254-bubn13gjvvjebc0ssde8la6u5eoopk4c.apps.googleusercontent.com"
+#define CLIENT_ID @"259213873134-n588m77bmt3kk2lj2r1occ65p5g3gqg5.apps.googleusercontent.com"
 
 @interface LoginView () <GIDSignInDelegate, GIDSignInUIDelegate>
 {
