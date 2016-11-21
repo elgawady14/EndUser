@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginView.h"
+@import Firebase;
+@import GoogleSignIn;
+#import <Firebase.h>
+#import "EndUser-Swift.h"
 
 @interface AppDelegate ()
 
@@ -16,8 +21,33 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [LoginView new];
+    [self.window makeKeyAndVisible];
+    NSLog(@"%@", [self getDocumentsPath]);
+    
+    // Use Firebase library to configure APIs
+    
+    [FIRApp configure];
+        
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    NSLog(@"%@", url);
+    
+    NSLog(@"%@", sourceApplication);
+    
+    return [[GIDSignIn sharedInstance] handleURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (NSString *)getDocumentsPath
+{
+    return [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                    inDomains:NSUserDomainMask] lastObject] absoluteString];
 }
 
 
@@ -45,6 +75,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [[Utils locationsRef] removeValue];
 }
 
 

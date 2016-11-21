@@ -9,10 +9,18 @@
 /* Begin PBXBuildFile section */
 		5718239E1DE30CA00015D9A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5718239D1DE30CA00015D9A4 /* main.m */; };
 		571823A11DE30CA00015D9A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823A01DE30CA00015D9A4 /* AppDelegate.m */; };
-		571823A41DE30CA00015D9A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823A31DE30CA00015D9A4 /* ViewController.m */; };
-		571823A71DE30CA00015D9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571823A51DE30CA00015D9A4 /* Main.storyboard */; };
 		571823A91DE30CA00015D9A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 571823A81DE30CA00015D9A4 /* Assets.xcassets */; };
 		571823AC1DE30CA00015D9A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571823AA1DE30CA00015D9A4 /* LaunchScreen.storyboard */; };
+		571823B61DE3101B0015D9A4 /* DevBoy.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823B51DE3101B0015D9A4 /* DevBoy.m */; };
+		571823BB1DE310970015D9A4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571823BA1DE310970015D9A4 /* Utils.swift */; };
+		571823BF1DE311040015D9A4 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823BE1DE311040015D9A4 /* Helper.m */; };
+		571823C31DE311370015D9A4 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823C11DE311370015D9A4 /* LoginView.m */; };
+		571823C71DE311650015D9A4 /* DemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823C51DE311650015D9A4 /* DemoView.m */; };
+		571823CB1DE311FA0015D9A4 /* MetricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 571823CA1DE311FA0015D9A4 /* MetricView.m */; };
+		571823D01DE3124B0015D9A4 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 571823CE1DE3124B0015D9A4 /* Raleway-Bold.ttf */; };
+		571823D11DE3124B0015D9A4 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 571823CF1DE3124B0015D9A4 /* Raleway-Regular.ttf */; };
+		571823D41DE313750015D9A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 571823D31DE313750015D9A4 /* GoogleService-Info.plist */; };
+		93DC5E37E5055BD90CC4511F /* libPods-EndUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9089499E5DDBE7798B650F08 /* libPods-EndUser.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +28,27 @@
 		5718239D1DE30CA00015D9A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5718239F1DE30CA00015D9A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571823A01DE30CA00015D9A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		571823A21DE30CA00015D9A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		571823A31DE30CA00015D9A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		571823A61DE30CA00015D9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		571823A81DE30CA00015D9A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		571823AB1DE30CA00015D9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		571823AD1DE30CA00015D9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		571823B41DE3101B0015D9A4 /* DevBoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevBoy.h; sourceTree = "<group>"; };
+		571823B51DE3101B0015D9A4 /* DevBoy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevBoy.m; sourceTree = "<group>"; };
+		571823B91DE310970015D9A4 /* EndUser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "EndUser-Bridging-Header.h"; path = "Utils/EndUser-Bridging-Header.h"; sourceTree = "<group>"; };
+		571823BA1DE310970015D9A4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		571823BD1DE311040015D9A4 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		571823BE1DE311040015D9A4 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		571823C11DE311370015D9A4 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		571823C21DE311370015D9A4 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		571823C51DE311650015D9A4 /* DemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoView.m; sourceTree = "<group>"; };
+		571823C61DE311650015D9A4 /* DemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoView.h; sourceTree = "<group>"; };
+		571823C91DE311FA0015D9A4 /* MetricView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricView.h; sourceTree = "<group>"; };
+		571823CA1DE311FA0015D9A4 /* MetricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricView.m; sourceTree = "<group>"; };
+		571823CE1DE3124B0015D9A4 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		571823CF1DE3124B0015D9A4 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		571823D31DE313750015D9A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5AEF0802D2BB64891CCD6A2E /* Pods-EndUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndUser.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndUser/Pods-EndUser.release.xcconfig"; sourceTree = "<group>"; };
+		9089499E5DDBE7798B650F08 /* libPods-EndUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EndUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D87D79021723B3C7008673E /* Pods-EndUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndUser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndUser/Pods-EndUser.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93DC5E37E5055BD90CC4511F /* libPods-EndUser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +68,8 @@
 			children = (
 				5718239B1DE30CA00015D9A4 /* EndUser */,
 				5718239A1DE30CA00015D9A4 /* Products */,
+				A164192188060DF97E562B4E /* Pods */,
+				7247E34A4F229D07DB0C68D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,14 +84,8 @@
 		5718239B1DE30CA00015D9A4 /* EndUser */ = {
 			isa = PBXGroup;
 			children = (
-				5718239F1DE30CA00015D9A4 /* AppDelegate.h */,
-				571823A01DE30CA00015D9A4 /* AppDelegate.m */,
-				571823A21DE30CA00015D9A4 /* ViewController.h */,
-				571823A31DE30CA00015D9A4 /* ViewController.m */,
-				571823A51DE30CA00015D9A4 /* Main.storyboard */,
-				571823A81DE30CA00015D9A4 /* Assets.xcassets */,
-				571823AA1DE30CA00015D9A4 /* LaunchScreen.storyboard */,
-				571823AD1DE30CA00015D9A4 /* Info.plist */,
+				571823B31DE30FE30015D9A4 /* Source */,
+				571823B71DE310390015D9A4 /* Demo */,
 				5718239C1DE30CA00015D9A4 /* Supporting Files */,
 			);
 			path = EndUser;
@@ -74,9 +94,124 @@
 		5718239C1DE30CA00015D9A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				571823B91DE310970015D9A4 /* EndUser-Bridging-Header.h */,
+				571823A81DE30CA00015D9A4 /* Assets.xcassets */,
+				571823AA1DE30CA00015D9A4 /* LaunchScreen.storyboard */,
 				5718239D1DE30CA00015D9A4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		571823B31DE30FE30015D9A4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				571823B41DE3101B0015D9A4 /* DevBoy.h */,
+				571823B51DE3101B0015D9A4 /* DevBoy.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		571823B71DE310390015D9A4 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				571823B81DE310740015D9A4 /* Utils */,
+				571823BC1DE310EA0015D9A4 /* Helper */,
+				571823C01DE311210015D9A4 /* LoginView */,
+				571823C41DE3114B0015D9A4 /* DemoView */,
+				571823C81DE311E60015D9A4 /* MetricView */,
+				571823CC1DE3122A0015D9A4 /* Resources */,
+				571823D21DE312980015D9A4 /* Misc */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		571823B81DE310740015D9A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				571823BA1DE310970015D9A4 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		571823BC1DE310EA0015D9A4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				571823BD1DE311040015D9A4 /* Helper.h */,
+				571823BE1DE311040015D9A4 /* Helper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		571823C01DE311210015D9A4 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				571823C21DE311370015D9A4 /* LoginView.h */,
+				571823C11DE311370015D9A4 /* LoginView.m */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		571823C41DE3114B0015D9A4 /* DemoView */ = {
+			isa = PBXGroup;
+			children = (
+				571823C51DE311650015D9A4 /* DemoView.m */,
+				571823C61DE311650015D9A4 /* DemoView.h */,
+			);
+			path = DemoView;
+			sourceTree = "<group>";
+		};
+		571823C81DE311E60015D9A4 /* MetricView */ = {
+			isa = PBXGroup;
+			children = (
+				571823C91DE311FA0015D9A4 /* MetricView.h */,
+				571823CA1DE311FA0015D9A4 /* MetricView.m */,
+			);
+			path = MetricView;
+			sourceTree = "<group>";
+		};
+		571823CC1DE3122A0015D9A4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				571823CD1DE312350015D9A4 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		571823CD1DE312350015D9A4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				571823CE1DE3124B0015D9A4 /* Raleway-Bold.ttf */,
+				571823CF1DE3124B0015D9A4 /* Raleway-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		571823D21DE312980015D9A4 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				571823D31DE313750015D9A4 /* GoogleService-Info.plist */,
+				5718239F1DE30CA00015D9A4 /* AppDelegate.h */,
+				571823A01DE30CA00015D9A4 /* AppDelegate.m */,
+				571823AD1DE30CA00015D9A4 /* Info.plist */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		7247E34A4F229D07DB0C68D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9089499E5DDBE7798B650F08 /* libPods-EndUser.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A164192188060DF97E562B4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D87D79021723B3C7008673E /* Pods-EndUser.debug.xcconfig */,
+				5AEF0802D2BB64891CCD6A2E /* Pods-EndUser.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +221,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 571823B01DE30CA00015D9A4 /* Build configuration list for PBXNativeTarget "EndUser" */;
 			buildPhases = (
+				A861E7C40FEC164DD7E902B1 /* [CP] Check Pods Manifest.lock */,
 				571823951DE30CA00015D9A4 /* Sources */,
 				571823961DE30CA00015D9A4 /* Frameworks */,
 				571823971DE30CA00015D9A4 /* Resources */,
+				643F586C8A69D1236E645A88 /* [CP] Embed Pods Frameworks */,
+				94C173C9F466CD00B7C2FCA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -111,6 +249,7 @@
 					571823981DE30CA00015D9A4 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = WK247W7C8M;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,35 +278,82 @@
 			buildActionMask = 2147483647;
 			files = (
 				571823AC1DE30CA00015D9A4 /* LaunchScreen.storyboard in Resources */,
+				571823D01DE3124B0015D9A4 /* Raleway-Bold.ttf in Resources */,
+				571823D41DE313750015D9A4 /* GoogleService-Info.plist in Resources */,
 				571823A91DE30CA00015D9A4 /* Assets.xcassets in Resources */,
-				571823A71DE30CA00015D9A4 /* Main.storyboard in Resources */,
+				571823D11DE3124B0015D9A4 /* Raleway-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		643F586C8A69D1236E645A88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndUser/Pods-EndUser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94C173C9F466CD00B7C2FCA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndUser/Pods-EndUser-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A861E7C40FEC164DD7E902B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		571823951DE30CA00015D9A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				571823A41DE30CA00015D9A4 /* ViewController.m in Sources */,
+				571823C31DE311370015D9A4 /* LoginView.m in Sources */,
+				571823C71DE311650015D9A4 /* DemoView.m in Sources */,
+				571823B61DE3101B0015D9A4 /* DevBoy.m in Sources */,
 				571823A11DE30CA00015D9A4 /* AppDelegate.m in Sources */,
 				5718239E1DE30CA00015D9A4 /* main.m in Sources */,
+				571823BB1DE310970015D9A4 /* Utils.swift in Sources */,
+				571823CB1DE311FA0015D9A4 /* MetricView.m in Sources */,
+				571823BF1DE311040015D9A4 /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		571823A51DE30CA00015D9A4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				571823A61DE30CA00015D9A4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		571823AA1DE30CA00015D9A4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -271,25 +457,34 @@
 		};
 		571823B11DE30CA00015D9A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D87D79021723B3C7008673E /* Pods-EndUser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = WK247W7C8M;
 				INFOPLIST_FILE = EndUser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hungerstation.ios.EndUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EndUser/Utils/EndUser-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		571823B21DE30CA00015D9A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AEF0802D2BB64891CCD6A2E /* Pods-EndUser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = WK247W7C8M;
 				INFOPLIST_FILE = EndUser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hungerstation.ios.EndUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EndUser/Utils/EndUser-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -312,6 +507,7 @@
 				571823B21DE30CA00015D9A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
