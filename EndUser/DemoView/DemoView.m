@@ -75,8 +75,8 @@
     self.trackingButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
     self.trackingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
     [self.trackingButton setImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
-    [self.trackingButton addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-    [self.maskView addSubview:self.trackingButton];
+//    [self.trackingButton addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
+//    [self.maskView addSubview:self.trackingButton];
     
     self.containerView = [UIView new];
     [self.view addSubview:self.containerView];
@@ -114,6 +114,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNewLocationsAdded:) name: @"newLocationAdded" object:nil];
     
+    _tracking = true;
+
     Utils.demoView = self;
     
     [Utils observeNewLocations];
@@ -134,9 +136,9 @@
 }
 
 
-#pragma mark - Follower
+#pragma mark - DevBoy
 
-- (void)start {
+/*- (void)start {
     _tracking = YES;
     
     [self.trackingButton setImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
@@ -181,7 +183,7 @@
     UIGraphicsEndImageContext();
     
     return img;
-}
+}*/
 
 #pragma mark - Map view delegate
 
@@ -199,13 +201,13 @@
     
     NSLog(@"longitude :: %f latitude :: %f", userLocation.coordinate.longitude, userLocation.coordinate.latitude);
     
-    if (_tracking) {
+    /*if (_tracking) {
 
         NSString *latitude = [NSString stringWithFormat:@"%f", userLocation.coordinate.latitude];
         NSString *longitude = [NSString stringWithFormat:@"%f", userLocation.coordinate.longitude];
         
         [Utils storeLocationsWithLatitudeWithLatitude:latitude andLongitude:longitude];
-    }
+    }*/
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -235,11 +237,11 @@
 
 - (void) centerMapOnThisLocation: (NSDictionary*) location {
 
-//    if (_tracking) {
+    if (_tracking) {
     
         CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([[location valueForKey:@"latitude"] floatValue], [[location valueForKey:@"longitude"] floatValue]);
         [_mapView setRegion:MKCoordinateRegionMake(coor, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
-//    }
+    }
 }
 
 - (void) updateUIWithThisLocation: (NSDictionary*) location {
@@ -254,104 +256,5 @@
      }
 }
 
-- (void) drawPolyLine {
-    
-    [_devBoy createPolylineForRoute];
-    [_devBoy createRegionForRoute];
-    [_mapView addOverlay:self.devBoy.routePolyline];
-    [_mapView setRegion:self.devBoy.routeRegion animated:YES];
-}
-
-#pragma mark - SAVE DATA
-
-- (void) saveDataFromArray:(NSMutableArray*) dummyData2 {
-    
-    //Get the documents directory path
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"myfile.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path]) {
-        
-        path = [documentsDirectory stringByAppendingPathComponent: [NSString stringWithFormat:@"myfile.plist"] ];
-    }
-    
-    NSMutableDictionary *data;
-    
-    if ([fileManager fileExistsAtPath: path]) {
-        
-        data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    }
-    else {
-        // If the file doesn’t exist, create an empty dictionary
-        data = [[NSMutableDictionary alloc] init];
-    }
-    
-    //To insert the data into the plist
-    [data setObject:dummyData2 forKey:@"dummyData"];
-    [data writeToFile:path atomically:YES];
-}
-
--(NSMutableArray*) retrieveData {
-    
-    //Get the documents directory path
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"myfile.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path]) {
-        
-        path = [documentsDirectory stringByAppendingPathComponent: [NSString stringWithFormat:@"myfile.plist"] ];
-    }
-    
-    //To reterive the data from the plist
-    NSMutableDictionary *savedValue = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    
-    NSMutableArray *dummyData2 = [savedValue objectForKey:@"dummyData"];
-    
-    return dummyData2;
-}
-
--(void) drawOnMap {
-    
-//    if (counter % 2 == 0) {
-// 
-//        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([[dummyData objectAtIndex:counter+1] floatValue], [[dummyData objectAtIndex:counter] floatValue]);
-//        [_mapView setRegion:MKCoordinateRegionMake(coor, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
-//    }
-//    else {
-//        
-//        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([[dummyData objectAtIndex:counter+1] floatValue], [[dummyData objectAtIndex:counter] floatValue]);
-//        [_mapView setRegion:MKCoordinateRegionMake(coor, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
-//
-//        counter++;
-//    }
-    
-    if (counter >= dummyData.count) {
-        
-        
-        [_devBoy createPolylineForRoute];
-        [_devBoy createRegionForRoute];
-        [_mapView addOverlay:self.devBoy.routePolyline];
-        [_mapView setRegion:self.devBoy.routeRegion animated:YES];
-        [timer invalidate];
-    }
-    else {
-        
-        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([[dummyData objectAtIndex:counter+1] floatValue], [[dummyData objectAtIndex:counter] floatValue]);
-        [_mapView setRegion:MKCoordinateRegionMake(coor, MKCoordinateSpanMake(.0005, .0005)) animated:YES];
-        
-        
-        [_devBoy handleLocationUpdate:[[CLLocation alloc] initWithLatitude:[[dummyData objectAtIndex:counter+1] floatValue] longitude:[[dummyData objectAtIndex:counter] floatValue]]];
-        
-        [_devBoy.routeLocations addObject:[[CLLocation alloc] initWithLatitude:[[dummyData objectAtIndex:counter+1] floatValue] longitude:[[dummyData objectAtIndex:counter] floatValue]]];
-        
-        counter += 2;
-    }
-    
-
-}
 
 @end

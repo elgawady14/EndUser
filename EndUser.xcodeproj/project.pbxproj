@@ -154,8 +154,8 @@
 		571823C41DE3114B0015D9A4 /* DemoView */ = {
 			isa = PBXGroup;
 			children = (
-				571823C51DE311650015D9A4 /* DemoView.m */,
 				571823C61DE311650015D9A4 /* DemoView.h */,
+				571823C51DE311650015D9A4 /* DemoView.m */,
 			);
 			path = DemoView;
 			sourceTree = "<group>";

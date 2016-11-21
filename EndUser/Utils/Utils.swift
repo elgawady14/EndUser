@@ -24,22 +24,6 @@ import Firebase
 
         print(Utils.locationsRef)
         
-        if !(Utils.demoView?.tracking)! {
-            
-            Utils.locationsRef.removeValue()
-        }
-        
-//        FIRDatabase.database().persistenceEnabled = true
-//        Utils.locationsRef.keepSynced(true)
-    }
-    
-    class func storeLocationsWithLatitude(latitude: String, andLongitude longitude: String) {
-        
-        let newLocation = locationsRef.childByAutoId()
-
-        let messageData: [String : String] = ["latitude" : latitude, "longitude" : longitude]
-        
-        newLocation.setValue(messageData)
     }
     
     
@@ -51,10 +35,10 @@ import Firebase
             
             if let dict = snapshot.value as? [String : String]  {
                 
-//                if (demoView?.tracking)! {
+                if (demoView?.tracking)! {
                 
                     NotificationCenter.default.post(name: NSNotification.Name("newLocationAdded"), object: dict)
-//                }
+                }
             }
         }
     
